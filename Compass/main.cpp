@@ -5,6 +5,6 @@ using namespace std;
 
 int main() {
     Compass processor;
-    processor.load_program_from_string( " a bb   ccc    dddd eeeee    " );
+    processor.load_program_from_string( "A variable. An variable." );
     processor.go();
 }

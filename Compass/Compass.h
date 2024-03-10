@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <unordered_map>
 
 /*
     Program has a set of instructions enumerated from 1 to x,
@@ -18,6 +19,7 @@ class Compass {
             // saving them inputs
             while ( tokenStream >> token ) {
                 instructions.push_back( token.length() );
+                tokens.push_back( token );
             }
         }
 
@@ -25,4 +27,7 @@ class Compass {
 
     private:
         std::vector<int_fast8_t> instructions;
+        std::vector<std::string> tokens;
+
+        std::unordered_map<std::string, long double> variables;
 };

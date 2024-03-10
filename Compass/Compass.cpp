@@ -1,34 +1,23 @@
 #include "Compass.h"
 
 /*
-	1 - pushes a number to a stack
-	2 - pops a number from a stack
-	3 - adds two numbers
-	4 - subtracts two numbers
-	5 - multiplies two numbers
+	1 - declares a number variable (the name is the next token)
+	2 - prints a variable
+	3 - sets a variable (next token is its name, the second is the value)
+		if it's a valid number, it will be passed as a number, otherwise it'll take length
 */
 
 void Compass::go() {
-	for ( uint_fast8_t instruction : instructions ) {
-		switch ( instruction ) {
+	for ( uint_fast64_t index( 0 ); index < instructions.size(); ++index ) {
+		switch ( instructions[index] ) {
 			case 1: {
-				std::cout << "1" << std::endl;
+				++index;
+				variables[ tokens[index] ] = 0;
 				break;
 			}
 			case 2: {
-				std::cout << "2" << std::endl;
-				break;
-			}
-			case 3: {
-				std::cout << "3" << std::endl;
-				break;
-			}
-			case 4: {
-				std::cout << "4" << std::endl;
-				break;
-			}
-			case 5: {
-				std::cout << "5" << std::endl;
+				++index;
+				std::cout << variables[tokens[index]];
 				break;
 			}
 		}
