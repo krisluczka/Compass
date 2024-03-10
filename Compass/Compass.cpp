@@ -10,16 +10,30 @@
 void Compass::go() {
 	for ( uint_fast64_t index( 0 ); index < instructions.size(); ++index ) {
 		switch ( instructions[index] ) {
-			case 1: {
+			case 1:
 				++index;
-				variables[ tokens[index] ] = 0;
+				if ( index < instructions.size() ) {
+					variables[ tokens[index] ] = 0;
+				}
 				break;
-			}
-			case 2: {
+			case 2:
 				++index;
-				std::cout << variables[tokens[index]];
+				if ( index < instructions.size() ) {
+					std::cout << variables[tokens[index]];
+				}
 				break;
-			}
+			case 3:
+				index += 2;
+				if ( index < instructions.size() ) {
+					try {
+						variables[tokens[index - 1]] = std::stod( tokens[index] );
+					} catch ( const std::invalid_argument& e ) {
+						variables[tokens[index - 1]] = instructions[index];
+					} catch ( const std::out_of_range& e ) {
+						variables[tokens[index - 1]] = instructions[index];
+					}
+				}
+				break;
 		}
 	}
 }
